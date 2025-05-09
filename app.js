@@ -3,13 +3,18 @@ const app = express();
 const port = process.env.PORT || 3001;
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(express.urlencoded({ extends: true }));
 
 app.get("/", (req, res) => {
   res.render("index", { userName: "Ahmed Atef" });
+  app.listen(port, () => {
+    console.log("http://localhost:3001");
+  });
 });
 
-app.listen(port, () => {
-  console.log("http://localhost:3001");
+app.get("/user/add", (req, res) => {
+  console.log("*****************");
+  res.render("/user/add");
 });
 
 const mongoose = require("mongoose");
@@ -25,4 +30,4 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
-  }); 
+  });
