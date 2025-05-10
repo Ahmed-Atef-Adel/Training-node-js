@@ -3,14 +3,10 @@ const app = express();
 const port = process.env.PORT || 3001;
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(express.urlencoded({ extends: true }));
+const User = require("./models/userSchema");
 
-app.get("/", (req, res) => {
-  res.render("index", { userName: "Ahmed Atef" });
-});
-
-app.listen(port, () => {
-  console.log("http://localhost:3001");
-});
+// Connecting with databse:
 
 const mongoose = require("mongoose");
 
@@ -25,4 +21,30 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
-  }); 
+  });
+
+// Get request:
+
+app.get("/", (req, res) => {
+  res.render("index");
+  app.listen(port, () => {
+    console.log("http://localhost:3001");
+  });
+});
+
+app.get("/user/add.html", (req, res) => {
+  console.log("*****************");
+  res.render("user/add");
+});
+
+// Post request:
+
+app.post("/user/add.html", (req, res) => {
+  User.create(req.body)
+    .then((result) => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
