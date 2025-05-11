@@ -5,6 +5,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extends: true }));
 const User = require("./models/userSchema");
+var moment = require("moment");
 
 // Connecting with databse:
 
@@ -24,6 +25,18 @@ mongoose
   });
 
 // Get request:
+
+app.get("/", (req, res) => {
+  User.find()
+    .then((result) => {
+      console.log("===================");
+      console.log(result);
+      res.render("index", { arr: result, moment: moment });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 app.get("/", (req, res) => {
   res.render("index");
@@ -48,3 +61,7 @@ app.post("/user/add.html", (req, res) => {
       console.log(err);
     });
 });
+
+// Put request:
+
+// Delete request:
