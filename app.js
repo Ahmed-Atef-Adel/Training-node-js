@@ -50,8 +50,19 @@ app.get("/user/add.html", (req, res) => {
   res.render("user/add");
 });
 
-// Post request:
+app.get("/user/:id", (req, res) => {
+  User.findById(req.params.id)
+    .then((result) => {
+      res.render("user/view", { obj: result, moment: moment });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+ 
 
+// Post request:
+ 
 app.post("/user/add.html", (req, res) => {
   User.create(req.body)
     .then((result) => {
@@ -65,3 +76,4 @@ app.post("/user/add.html", (req, res) => {
 // Put request:
 
 // Delete request:
+
