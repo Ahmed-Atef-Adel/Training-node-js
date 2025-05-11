@@ -3,15 +3,18 @@ const Schema = mongoose.Schema;
 
 // Define The schema (the structure of the article):
 
-const userSchema = new Schema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  phoneNumber: String,
-  age: String,
-  country: String,
-  gender: String,
-});
+const userSchema = new Schema(
+  {
+    firstName: String,
+    lastName: String,
+    email: String,
+    phoneNumber: String,
+    age: String,
+    country: String,
+    gender: String,
+  },
+  { timestamps: true }
+);
 
 // Creating a model based on that schema:
 
