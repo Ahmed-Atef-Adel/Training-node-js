@@ -59,10 +59,19 @@ app.get("/user/:id", (req, res) => {
       console.log(err);
     });
 });
- 
+
+app.get("/edit/:id", (req, res) => {
+  User.findById(req.params.id)
+    .then((result) => {
+      res.render("user/edit", { obj: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 // Post request:
- 
+
 app.post("/user/add.html", (req, res) => {
   User.create(req.body)
     .then((result) => {
@@ -76,4 +85,3 @@ app.post("/user/add.html", (req, res) => {
 // Put request:
 
 // Delete request:
-
