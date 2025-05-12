@@ -305,11 +305,11 @@
         <nav class="px-2 mt-4 d-flex flex-wrap justify-content-between" aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Ali Hassan</li>
+            <li class="breadcrumb-item active" aria-current="page"> <%= obj.firstName %> <%= obj.lastName %></li>
           </ol>
 
 
-          <p class="me-md-5"> <span class="fw-medium fs-6">Id :</span> 6487021520bcf1af6319484c</p>
+          <p class="me-md-5"> <span class="fw-medium fs-6">Id :</span> <%= obj._id %></p>
         </nav>
 
 
@@ -323,7 +323,8 @@
           <div class="col-md-6">
             <label for="inputfirstName4" class="form-label">First Name:</label>
             <input
-              placeholder="Ali..."
+              placeholder="Ahmed..."
+              value="<%= obj.firstName %>"
               type="text"
               class="form-control"
               id="inputfirstName4"
@@ -332,7 +333,8 @@
           <div class="col-md-6">
             <label for="inputlastName4" class="form-label">Last Name:</label>
             <input
-              placeholder="Hassan..."
+              placeholder="Atef..."
+              value="<%= obj.lastName %>"
               type="text"
               class="form-control"
               id="inputlastName4"
@@ -342,7 +344,8 @@
           <div class="col-md-6">
             <label for="inputemail4" class="form-label">Email:</label>
             <input
-              placeholder="ali@gmail.com"
+              placeholder="ahmed@gmail.com"
+              value="<%= obj.email %>"
               type="email"
               class="form-control"
               id="inputemail4"
@@ -351,7 +354,8 @@
           <div class="col-md-6">
             <label for="inputtele4" class="form-label">Telephone:</label>
             <input
-              placeholder="011987899"
+              placeholder="01198..."
+              value="<%= obj.phoneNumber %>"
               type="number"
               class="form-control"
               id="inputtele4"
@@ -363,6 +367,7 @@
               <label for="inputage4" class="form-label">Age:</label>
               <input
                 placeholder="Your Age: ..."
+                value="<%= obj.age %>"
                 type="number"
                 class="form-control"
                 id="inputage4"
@@ -376,8 +381,8 @@
               <select id="inputCountry" class="form-select">
                 <option selected hidden disabled>Choose here ...</option>
 
-                <option>Morocco</option>
-                <option>Egypt</option>
+                <option <%= obj.country === 'Morocco'? 'selected' : null %>>Morocco</option>
+                <option <%= obj.country === 'Egypt'? 'selected' : null %> >Egypt</option>
               </select>
             </div>
           </div>
@@ -387,8 +392,8 @@
               <label for="inputGender" class="form-label">Gender:</label>
               <select id="inputGender" class="form-select">
                 <option selected hidden disabled>Choose here ...</option>
-                <option>Male</option>
-                <option>Female</option>
+                <option <%= obj.gender === 'Male'? 'selected' : null %> >Male</option>
+                <option <%= obj.gender === 'Female'? 'selected' : null %> >Female</option>
               </select>
             </div>
           </div>
