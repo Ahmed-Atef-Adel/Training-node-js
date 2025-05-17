@@ -6,6 +6,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extends: true }));
 const User = require("./models/userSchema");
 var moment = require("moment");
+var methodOverride = require("method-override");
+app.use(methodOverride("_method"));
 
 // Connecting with databse:
 
@@ -29,8 +31,6 @@ mongoose
 app.get("/", (req, res) => {
   User.find()
     .then((result) => {
-      console.log("===================");
-      console.log(result);
       res.render("index", { arr: result, moment: moment });
     })
     .catch((err) => {
@@ -83,5 +83,15 @@ app.post("/user/add.html", (req, res) => {
 });
 
 // Put request:
+
+app.put("/edit/:id", (req, res) => {
+  User.findOneAndUpdate(req.params.id)
+    .then((result) => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 // Delete request:
