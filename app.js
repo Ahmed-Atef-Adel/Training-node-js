@@ -84,8 +84,19 @@ app.post("/user/add.html", (req, res) => {
 
 // Put request:
 
+// app.put("/edit/:id", (req, res) => {
+//   User.findOneAndUpdate(req.params.id)
+//     .then((result) => {
+//       res.redirect("/");
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+
 app.put("/edit/:id", (req, res) => {
-  User.findOneAndUpdate(req.params.id)
+  console.log(req.body);
+  User.updateOne({ _id: req.params.id }, req.body)
     .then((result) => {
       res.redirect("/");
     })
