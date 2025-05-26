@@ -82,6 +82,17 @@ app.post("/user/add.html", (req, res) => {
     });
 });
 
+app.post("/search", (req, res) => {
+  User.find({ firstName: req.body.searchText })
+    .then((result) => {
+      console.log(result);
+      res.render("user/search.ejs", {arr: result});
+    })
+    .catch((err) => {
+      console.log("err");
+    });
+});
+
 // Put request:
 
 // app.put("/edit/:id", (req, res) => {
@@ -106,3 +117,13 @@ app.put("/edit/:id", (req, res) => {
 });
 
 // Delete request:
+
+app.delete("/delete/:id", (req, res) => {
+  User.deleteOne({ _id: req.params.id })
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});

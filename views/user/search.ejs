@@ -305,22 +305,13 @@
           style="width: 99%"
           class="text-center mx-auto table mt-5 table-striped table-bordered"
         >
-          <thead>
+        <% arr.forEach((item, index) => { %>
+                   <tbody>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Full Name</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Country</th>
-
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>test1</td>
-              <td>test2</td>
-              <td>@test3</td>
+              <th scope="row"><%= index +1 %></th>
+              <td><%= item.firstName %> <%= item.lastName %></td>
+              <td><%= item.gender %></td>
+              <td><%= item.country %></td>
 
               <td>
                 <a
@@ -352,6 +343,18 @@
               </td>
             </tr>
           </tbody>
+        <% }) %>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Country</th>
+
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+
         </table>
       </section>
     </main>
