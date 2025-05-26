@@ -442,9 +442,13 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-danger">
-                Delete
-              </button>
+              <form style="display: inline-block;" action="/delete/<%= obj._id %>?_method=DELETE" method="post">
+                <button type="submit" class="btn btn-danger">
+                  Delete
+                </button>
+              </form>
+
+            
             </div>
           </div>
         </div>
